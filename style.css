@@ -23,13 +23,15 @@ body {
   cursor: pointer;
   perspective: 1000px;
   width: 300px;
-  height: 450px;
+  height: 300px;
 }
 
 .card-flip__flipper {
   transition: .3s ease;
   transform-style: preserve-3d;
   position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 .card-flip__content {
@@ -37,6 +39,8 @@ body {
   backface-visibility: hidden;
   position: absolute;
   overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 .fancy-hover__image {
@@ -123,6 +127,8 @@ body {
 .card-flip__content--front {
   transform: rotateY(0deg);
   z-index: 2;
+  height: 100%;
+  width: 100%;
 }
 
 .card-flip__content--back {
@@ -131,10 +137,45 @@ body {
   color: white;
   text-align: center;
   padding: 16px;
-  height: 450px;
+  height: 100%;
+  width: 100%;
   transform: rotateY(180deg);
+  overflow-y: scroll;
+}
+
+.card-flip__content--back::-webkit-scrollbar {
+  width: 10px;
+}
+
+.card-flip__content--back::-webkit-scrollbar-track {
+  background-color: #F5F5F5;
+}
+
+.card-flip__content--back::-webkit-scrollbar-thumb {
+  background-color: #000000;
 }
 
 .card-flip.clicked .card-flip__flipper {
   transform: rotateY(180deg);
+}
+
+ol {
+  counter-reset: item;
+  padding-left: 0;
+}
+
+li {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-left: 2em; /* Ajusta el margen izquierdo para dejar espacio para los números */
+  text-indent: -2em; /* Ajusta la identación del texto */
+  padding-left: 2em; /* Agrega espacio entre el número y el texto */
+}
+
+li:before {
+  content: counter(item) ".";
+  counter-increment: item;
+  display: inline-block;
+  width: 2em;
+  margin-left: -1em; /* Ajusta el margen izquierdo para alinear los números */
 }
